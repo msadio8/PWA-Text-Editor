@@ -1,15 +1,15 @@
 {
-  "name": "PWA-Text-Editor",
+  "name": "jate",
   "version": "1.0.0",
   "description": "Progressive Web Applications (PWA) Challenge: Text Editor",
   "main": "server.js",
   "scripts": {
-    "start:dev": "",
-    "start": "",
-    "server": "",
-    "build": "",
-    "install": "",
-    "client": ""
+    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
+    "start": "npm run build && cd server && node server.js",
+    "server": "cd server nodemon server.js --ignore client",
+    "build": "cd client && npm run build",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "Meriam Sadio",
@@ -24,10 +24,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msadio8/PWA-Text-Editor.git"
+    "url": "git+https://github.com/msadio8/Text-Editor.git"
   },
   "bugs": {
-    "url": "https://github.com/msadio8/PWA-Text-Editor/issues"
+    "url": "https://github.com/msadio8/Text-Editor/issues"
   },
-  "homepage": "https://github.com/msadio8/PWA-Text-Editor#readme"
+  "homepage": "https://github.com/msadio8/Text-Editor#readme"
 }
