@@ -17,13 +17,64 @@ module.exports = () => {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [
+    plugins: [ 
+
+      // Webpack plugin that generates our html file and injects our bundles.
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Just Another Text Editor',
+      }),
       
+      // Injects our custom service worker
+      new injectManifest({
+        swSrc: './src-sw.js',
+        swDest:'./src-sw.js',
+      })
+
+      // Creates a manifest.json file.
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Just Another Text Editor',
+        short_name: 'J.A.T.E',
+        description: 'Create note Online or Offline!',
+        background_color: '#272822',
+        theme_color: '#272822',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
       rules: [
-        
+        // add CSS loaders to webpack
+        {
+          test: /\.css$/i,
+          use: ['style-loader','css-loader'],
+        },
+        //add babel 
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: [
+                '@babel/plugin-proposal-object-rest-spread',
+                '@babel/transform-runtime',
+              ],
+            },
+          },
+        },
       ],
     },
   };
