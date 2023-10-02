@@ -67,10 +67,11 @@ To get started with this PWA Text Editor, follow these installation steps in you
 
 ![Alt text](<public/images/Screenshot 2023-10-02 at 3.14.55 pm.png>)
 
-![Alt text](<public/images/Screenshot 2023-10-02 at 3.15.30 pm.png>)
+![Alt text](<public/images/Screenshot 2023-10-03 at 8.07.43 am (2).png>)
 
 
 ## Heroku deployed url
 
+You can access the Text Editor deployement in Heroku  by clicking [here](https://atext-editor-9b1cfb698005.herokuapp.com/)
 
 Feel free to explore and enjoy our Progressive Web Application Text Editor! If you have any questions or encounter any issues, please don't hesitate to reach out. Happy editing!
